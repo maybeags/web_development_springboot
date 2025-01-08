@@ -22,4 +22,21 @@ public interface BlogRepository extends JpaRepository<Article, Long> {
                    응답  (BlogController.java)          (BlogService.java)  (BlogRepository.java)
                    POST
                /api/articles
+
+        서비스 메서드 코드 작성
+            Create
+            서비스 계층에서 요청을 받을 객체인 AddArticleRequest 객체를 생성하고,
+            BlogService 클래스를 생성한 후에 -> 블로그 글 추가 메서드인 save()를 구현
+
+            지시 사항
+
+            repository 패키지와 같은 라인에 dto 패키지 생성 ->
+            컨트롤러에서 요청한 본문을 받을 객체인 AddArticleRequest.java 파일을 생성
+
+            DTO(Data Transfer Object) : 계층끼리 데이터를 교환하기 위해 사용하는 객체
+            DAO는 데이터베이스와 연결되고 데이터를 조회하고 수정하는 사용되는 객체라 비교가 필요합니다.
+            DAO의 경우에는 데이터 수정 관련된 로직이 포함되지만 DTO는 단순하게 데이터를 옮기기 위해 사용하는 전달자 역할
+            -> 그래서 별도의 비지니스 로직이 필요하지 않다.
+
+
  */
