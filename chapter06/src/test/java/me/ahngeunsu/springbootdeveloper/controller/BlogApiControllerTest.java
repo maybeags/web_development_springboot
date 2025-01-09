@@ -19,8 +19,10 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest         // 테스트용 애플리케이션 컨텍스트
@@ -142,7 +144,88 @@ class BlogApiControllerTest {
         assertThat(article.title()).isEqualTo("제목");   - 블로그의 글의 title 값이 "제목"이어야 합니다.
         assertThat(article.title()).isNotEmpty();   - 블로그의 글의 title 값이 비어있지 않아야 합니다.
         assertThat(article.title()).contains("제");   - 블로그의 글의 title 값이 "제"를 포함해야 합니다.
+
+        BlogService.java 파일로 넘어갈게요.
        */
   }
+  @DisplayName("findAllArticles : 블로그 글 목록 조회 성공")
+  @Test
+  public void findAllArticles() throws Exception {
+      // given
+      final String url = "/api/articles";
+      final String title = "title";
+      final String content = "content";
+
+      blogRepository.save(Article.builder()
+                      .title(title)
+                      .content(content)
+              .build());
+
+      // when
+      final ResultActions result = mockMvc.perform(get(url)
+              .accept(MediaType.APPLICATION_JSON));
+
+      // then
+      result.andExpect(status().isOk())
+              .andExpect(jsonPath("$[0].content").value(content))
+              .andExpect(jsonPath("$[0].title").value(title));
+  }
+
+  @DisplayName("findArticle : 블로그 글 조회 성공")
+  @Test
+  public void findArticle() throws Exception {
+      // given
+      final String url = "/api/articles/{id}";
+      final String title = "title";
+      final String content = "content";
+
+      Article savedArticle = blogRepository.save(Article.builder()
+                      .title(title)
+                      .content(content)
+              .build());
+
+      // when
+      final ResultActions resultActions = mockMvc.perform(get(url, savedArticle.getId()));
+
+      // then
+      resultActions.andExpect(status().isOk())
+              .andExpect(jsonPath("$.title").value(title))
+              .andExpect(jsonPath("$.content").value(content));
+  }
+  /*
+    삭제 구현하겠습니다.
+
+        BlogService로 가서 delete() 메서드 추가 -> blogRepository를 기준으로.
+   */
+
+    // 삭제 메서드
+    @DisplayName("deleteArticle : 블로그 글 삭제")
+    @Test
+    public void deleteArticle() throws Exception {
+        // given - 1
+        final String url = "/api/articles/{id}";
+        final String title = "title";
+        final String content = "content";
+
+        // given - 2 객체 생성 -> 하나만 생성했다가 지운 다음에 List 전체 불러왔는데 0이면 됩니다.
+        Article savedArticle = blogRepository.save(Article.builder()
+                .title(title)
+                .content(content)
+                .build());
+
+        // when     - CR과 다른 점이 하나 있습니다.
+        mockMvc.perform(delete(url, savedArticle.getId()))// findArticle()처럼 하나의 객체를 대상으로 할 때는 argument가 url만 있는게 아닙니다.
+                .andExpect(status().isOk());
+
+        // then - 검증단계에서 블로그 글 목록을 전부 다 가지고 올겁니다. -> size()체크 했더니 0 이거나 / .isEmpty() 메서드 활용
+        // 전부 다 가지고 오는 단계
+        List<Article> articles = blogRepository.findAll();
+
+        // 가지고 온 List에 아무런 값이 없는지 확인하는 단계 -> 왜 아무것도 없냐?
+        // Test 메서드는 메서드 단위로 실행된다고 했습니다.
+        // given 단계에서 생성한 객체 하나만 있고, 그것을 삭제 했기 때문에
+        // articles 내에는 아무런 값도 없어야만 합니다.
+        assertThat(articles).isEmpty();
+    }
 
 }
