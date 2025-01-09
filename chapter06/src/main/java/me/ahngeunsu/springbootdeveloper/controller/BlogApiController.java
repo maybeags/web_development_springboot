@@ -81,5 +81,15 @@ public class BlogApiController {
         내일은 반복작업을 줄여줄 테스트 코드들을 작성하겠습니다.
             - 매번 H2 들어가는게 번거로워서
             test를 이용할 예정.
+
+            test 폴더에 BlogApiControllerTest.java를 만들기 위한 방법
+            파일 내에 들어와서 public class BlogApiController 표기된 부분으로 들어가서
+            클래스명 클릭 + alt + enter -> create test가 있었습니다.
+
+
+
+
+
+
      */
 }
