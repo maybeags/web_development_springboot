@@ -63,4 +63,6 @@ public class ExampleController {
 컨트롤러(Controller)---------------------->           hobbies : ["운동", "독서"] -------------------> 뷰(View)
                                                     모델(Model)
 
+    다 하신 분들은 src/main/resources/templates 디렉토리에 example.html을 만들겁니다.
+
  */

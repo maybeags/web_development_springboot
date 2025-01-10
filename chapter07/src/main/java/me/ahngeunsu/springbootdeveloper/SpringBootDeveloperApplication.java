@@ -1,5 +1,11 @@
 package me.ahngeunsu.springbootdeveloper;
-
+/*
+    서버 실행 안될 때 일단 한 번 시도해보기
+    1. 햄버거 - build - rebuild project
+    2. intellij 전부 다 끄고 재시작
+    3. SpringBootDeveloperApplication.java 들어와서
+    4. current file인거 확인하시고 재시작
+ */
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
