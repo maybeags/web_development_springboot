@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import me.ahngeunsu.springbootdeveloper.domain.Article;
 import me.ahngeunsu.springbootdeveloper.dto.AddArticleRequest;
 import me.ahngeunsu.springbootdeveloper.dto.ArticleResponse;
+import me.ahngeunsu.springbootdeveloper.dto.UpdateArticleRequest;
 import me.ahngeunsu.springbootdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -150,6 +151,18 @@ public class BlogApiController {
 
        다 확인 끝났으면 BlogApiControllerTest.java가서 테스트형태의 메서드로 삭제 확인
      */
+    @PutMapping("/api/articles/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable long id, @RequestBody UpdateArticleRequest request) {
+        Article updateArticle = blogService.update(id, request);
+
+        return ResponseEntity.ok().body(updateArticle);
+    }
+    /*
+        /api/articles/{id} PUT요청이 들어오면 Request Body 정보가 request로 넘어옵니다.
+        그리고 다시 서비스 클래스의 update() 메서드에 id와 request를 넘겨줍니다.
+        응답 값은 body에 담아 전송합니다.
+     */
+
 
 }
 
