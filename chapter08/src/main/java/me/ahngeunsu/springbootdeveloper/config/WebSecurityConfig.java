@@ -110,4 +110,10 @@ public class WebSecurityConfig {
         passwordEncoder : 비밀 번호 인코더를 설정
 
     9. 패스워드 인코더를 빈으로 등록
+
+
+    회원 가입 구현
+        서비스 메서드 작성할겁니다 -> 사용자 정보를 담고 있는 객체를 만들 수 있도록 해야합니다.
+            -> dto 패키지에 AddUserRequest.java 파일을 생성
+
  */
