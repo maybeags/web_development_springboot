@@ -20,4 +20,6 @@ public class UserViewController {
 
         resources/templates에 login.html 생성
      */
+
+    // 로그아웃 관련
 }
