@@ -19,7 +19,7 @@ public class SpringBootDeveloperApplication {
         -> UserViewController가 해당 요청에 대한 분기 처리를 하고 WebSecurityConfig에 설정한 보안 관련
             내용들을 실행
         -> UserDetailsService를 실행하면 요청을 성공했을 때
-        -> defaultSuccessUrl로 설정한 /articles로 리다이렉트 하거나 csrf를 disableㅎ하거나 하는 등의 작업
+        -> defaultSuccessUrl로 설정한 /articles로 리다이렉트 하거나 csrf를 disable하거나 하는 등의 작업
 
         UserDetailsService에서는 loadUserByUsername() 메서드를 실행하여 이메일로 유저를 찾고 반환.
 
