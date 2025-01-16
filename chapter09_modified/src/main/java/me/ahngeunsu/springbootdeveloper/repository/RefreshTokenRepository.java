@@ -23,4 +23,12 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long
             공유하지 않으므로 독립적으로 사용 가능.
 
             시큐리티 컨텍스트 객체가 저장하는 객체 시큐리티 컨텍스트 홀더에 해당함.
+
+            domain -> RefreshToken
+            repository -> RefreshTokenRepository
+
+            다 하신 분들은 config 디렉토리에
+            TokenAuthenticationFilter.java 파일 생성
+            이 필터는 -> 액세스 토큰이 담긴 Authorization 헤더 값을
+            가져온 뒤에 액세스 토큰이 유효하다면 인증 정보를 설정
  */
