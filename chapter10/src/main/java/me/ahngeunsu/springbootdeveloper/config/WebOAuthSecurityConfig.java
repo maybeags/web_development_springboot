@@ -104,5 +104,12 @@ public class WebOAuthSecurityConfig {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
+/*
+    OAuth2에 필요한 정보를 세션이 아니라 쿠키에 저장해 쓸 수 있도록 인증 요청과 관련된
+    상태를 저장할 저장소를 구현합니다.
+
+    config/oauth 내에
+    OAuth2AuthorizationRequestBasedOnCookieRepository 클래스 생성.
+
+ */
