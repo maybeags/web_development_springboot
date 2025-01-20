@@ -46,3 +46,6 @@ public class OAuth2AuthorizationRequestBasedOnCookieRepository
         CookieUtil.deleteCookie(request, response, OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME);
     }
 }
+/*
+    config 패키지 -> OAuth2SuccessHandler.java 파일 생성
+ */
