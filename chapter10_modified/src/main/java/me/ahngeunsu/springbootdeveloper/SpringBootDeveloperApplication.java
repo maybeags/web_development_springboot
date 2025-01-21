@@ -154,4 +154,15 @@ public class SpringBootDeveloperApplication {
         유틸리티로 사용할 쿠키 관리 클래스를 미리 구현
 
         springbootdeveloper 패키지 내에 util 패키지를 생성 -> CookieUtil.java를 생성
+
+
+
+
+        자 현재 access_token을 기준으로 합니다 -> 저희는 지금 oauth를 통해서 로그인을 했습니다.
+        access_token과 refresh_token을 받았습니다.
+
+        -> 로그인 이전에 이미 data.sql을 통해서 1-3번글까지는 있는 상황 각각 user 1 - user 3
+
+        즉, 현재 우리가 로그인한 상태로는 새로운 글 생성 및, 새로 생성된 글을 바탕으로 한
+        수정, 및 삭제가 가능합니다.
  */

@@ -14,7 +14,6 @@ package springbootdeveloper.controller;
  */
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.ahngeunsu.springbootdeveloper.config.jwt.JwtFactory;
 import me.ahngeunsu.springbootdeveloper.config.jwt.JwtProperties;
 import me.ahngeunsu.springbootdeveloper.domain.RefreshToken;
 import me.ahngeunsu.springbootdeveloper.domain.User;
@@ -32,6 +31,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import springbootdeveloper.config.jwt.JwtFactory;
 
 import java.util.Map;
 
